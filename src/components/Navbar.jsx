@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Instagram } from 'lucide-react';
-// Import your logo
+import { Menu, X, Instagram, Facebook } from 'lucide-react';
 import logo from '../assets/logo.jpeg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Added https:// so the browser knows it is an external website
+  const freshaUrl = "https://www.fresha.com/a/c-b-colour-portishead-down-road-aucrisv2/booking?menu=true&pId=2625444";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -55,15 +57,23 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a href="https://instagram.com/cb_colour" target="_blank" rel="noreferrer" className="hover:opacity-70 transition-opacity">
-            <Instagram size={18} className="text-brand-black" />
-          </a>
-          <button 
-            onClick={() => window.fresha?.open({ businessId: "aucrisv2" })}
-            className="btn-fresha !py-2.5 !px-8 text-[9px]"
+          <div className="flex gap-4 items-center border-l border-brand-accent/20 pl-6 ml-2">
+            <a href="https://instagram.com/cb_colour" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">
+              <Instagram size={18} />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61576895611799" target="_blank" rel="noreferrer" className="hover:text-brand-gold transition-colors">
+              <Facebook size={18} />
+            </a>
+          </div>
+          
+          <a 
+            href={freshaUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-fresha !py-2.5 !px-8 text-[9px] inline-block text-center"
           >
             Book Now
-          </button>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -86,19 +96,19 @@ export default function Navbar() {
             </a>
           ))}
           <div className="flex flex-col gap-4 pt-4">
-            <button 
-              onClick={() => {
-                window.fresha?.open({ businessId: "aucrisv2" });
-                setIsOpen(false);
-              }}
-              className="btn-fresha w-full !py-4"
+            <a 
+              href={freshaUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-fresha w-full !py-4 text-center"
+              onClick={() => setIsOpen(false)}
             >
               Book Now
-            </button>
-            <a href="https://instagram.com/cb_colour" className="flex items-center justify-center gap-2 text-brand-slate py-2">
-              <Instagram size={20} />
-              <span className="text-xs uppercase tracking-widest font-bold">Follow @cb_colour</span>
             </a>
+            <div className="flex justify-center gap-8 py-4">
+               <a href="https://instagram.com/cb_colour" className="text-brand-slate"><Instagram size={24} /></a>
+               <a href="https://www.facebook.com/profile.php?id=61576895611799" className="text-brand-slate"><Facebook size={24} /></a>
+            </div>
           </div>
         </div>
       )}

@@ -2,14 +2,10 @@ import React from 'react';
 import heroImage from '../assets/hero3.jpg';
 
 export default function Hero() {
-  const handleBookNow = () => {
-    if (window.fresha) {
-      window.fresha.open({ businessId: "aucrisv2" });
-    }
-  };
+  // Same direct link used in the Navbar and Footer for consistency
+  const freshaUrl = "https://www.fresha.com/a/c-b-colour-portishead-down-road-aucrisv2/booking?menu=true&pId=2625444";
 
   return (
-    /* pt-24 on all screens, md:pt-32 for extra breathing room on PC */
     <section className="relative min-h-[90vh] flex flex-col md:flex-row items-center bg-brand-cream overflow-hidden pt-24 md:pt-32">
       
       {/* Text Content */}
@@ -27,24 +23,36 @@ export default function Hero() {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <button onClick={handleBookNow} className="btn-fresha cursor-pointer">
+          {/* Main Booking Button */}
+          <a 
+            href={freshaUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-fresha inline-block text-center no-underline cursor-pointer"
+          >
             Book Appointment
-          </button>
-          <a href="#services" className="px-8 py-4 border border-brand-black/20 rounded-sm uppercase tracking-widest text-xs font-bold hover:bg-brand-black hover:text-white transition-all flex items-center justify-center text-center">
+          </a>
+
+          {/* Secondary Services Button */}
+          <a 
+            href="#services" 
+            className="px-8 py-4 border border-brand-accent rounded-full uppercase tracking-widest text-[10px] font-bold text-brand-black hover:bg-brand-black hover:text-brand-cream transition-all duration-500 flex items-center justify-center text-center"
+          >
             View Services
           </a>
         </div>
       </div>
 
       {/* Hero Image Section */}
-      <div className="w-full md:w-1/2 h-[65vh] md:h-[90vh] relative overflow-hidden">
-        <div className="absolute inset-0 bg-brand-black/5 z-10" />
+      <div className="w-full md:w-1/2 h-[65vh] md:h-[90vh] relative overflow-hidden group">
+        <div className="absolute inset-0 bg-brand-black/5 z-10 transition-opacity duration-700 group-hover:opacity-0" />
         <img 
           src={heroImage} 
           alt="C.B Colour Bespoke Hair" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center transition-transform duration-[3000ms] group-hover:scale-110"
         />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/20 -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl" />
+        {/* Subtle Decorative Element */}
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl" />
       </div>
     </section>
   );

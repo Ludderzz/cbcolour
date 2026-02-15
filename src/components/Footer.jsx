@@ -1,7 +1,10 @@
 import React from 'react';
-import { Instagram, MapPin } from 'lucide-react';
+import { Facebook, Instagram, MapPin } from 'lucide-react';
 
 export default function Footer() {
+  // Direct Fresha link for consistency
+  const freshaUrl = "https://www.fresha.com/a/c-b-colour-portishead-down-road-aucrisv2/booking?menu=true&pId=2625444";
+
   const openingHours = [
     { day: 'Monday', time: '10:00 AM - 7:00 PM' },
     { day: 'Tuesday', time: 'Closed' },
@@ -26,16 +29,16 @@ export default function Footer() {
             </div>
           </div>
           
-          {/* Map Container: Color on mobile, Grayscale on Desktop */}
+          {/* Map Container: Grayscale on Desktop for that luxury feel */}
           <div className="mt-4 w-full h-72 md:h-64 rounded-sm overflow-hidden border border-brand-cream/10 grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-700">
             <iframe 
-            src="https://maps.google.com/maps?q=C.B%20Colour%20Portishead&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            title="C.B Colour Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.265738641957!2d-2.7845!3d51.4885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871ed0736e6f0e5%3A0x6a1a1a1a1a1a1a1a!2sDown%20Rd%2C%20Portishead%2C%20Bristol%20BS20!5e0!3m2!1sen!2suk!4v1700000000000" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              title="C.B Colour Location"
             ></iframe>  
           </div>
         </div>
@@ -61,16 +64,27 @@ export default function Footer() {
             <span className="font-display text-4xl tracking-tighter text-white">C.B COLOUR</span>
             <span className="text-xs uppercase tracking-[0.5em] text-brand-gold font-bold">Bespoke Hair</span>
           </div>
-          <div className="flex items-center gap-3 justify-center md:justify-end">
-            <Instagram size={18} className="text-brand-gold" />
-            <a href="https://instagram.com" className="text-sm opacity-80 hover:text-brand-gold">@cb_colour</a>
+
+          <div className="flex flex-col gap-3 mt-2">
+            <a href="https://www.facebook.com/profile.php?id=61576895611799" target="_blank" rel="noreferrer" className="flex items-center gap-3 justify-center md:justify-end group">
+              <Facebook size={18} className="text-brand-gold transition-transform group-hover:scale-110" />
+              <span className="text-sm opacity-80 hover:text-brand-gold transition-colors">C.B Colour Portishead</span>
+            </a>
+            <a href="https://www.instagram.com/cb_colour/" target="_blank" rel="noreferrer" className="flex items-center gap-3 justify-center md:justify-end group">
+              <Instagram size={18} className="text-brand-gold transition-transform group-hover:scale-110" />
+              <span className="text-sm opacity-80 hover:text-brand-gold transition-colors">@cb_colour</span>
+            </a>
           </div>
-          <button 
-            onClick={() => window.fresha?.open({ businessId: "aucrisv2" })}
-            className="btn-fresha !bg-brand-cream !text-brand-black hover:!bg-brand-gold w-full md:w-auto mt-4"
+
+          {/* Book via Fresha Link */}
+          <a 
+            href={freshaUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-fresha !bg-brand-cream !text-brand-black hover:!bg-brand-gold w-full md:w-auto mt-4 inline-block text-center no-underline"
           >
             Book via Fresha
-          </button>
+          </a>
         </div>
       </div>
 
