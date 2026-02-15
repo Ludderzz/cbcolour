@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ServiceCard from './components/ServiceCard';
 import BookingWidget from './components/BookingWidget';
 import { services } from './data/services';
+import Portfolio from './components/Portfolio';
 
 function App() {
   useEffect(() => {
@@ -58,6 +59,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <Portfolio />
 
         {/* Portfolio / Instagram Teaser Placeholder */}
         <section className="bg-brand-black py-20 overflow-hidden">

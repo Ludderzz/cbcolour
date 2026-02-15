@@ -1,26 +1,76 @@
-/* src/styles/brand.css */
+@import "tailwindcss";
 
 @theme {
-  /* Brand Colors - Inspired by premium salon aesthetics */
-  --color-brand-gold: #C5A059;       /* A more muted, sophisticated gold */
-  --color-brand-black: #111111;      /* Deep obsidian for high contrast */
-  --color-brand-cream: #F9F8F6;      /* Off-white "gallery" background */
-  --color-brand-slate: #4A4A4A;      /* For softer body text */
+  /* --- The "Clean Girl" Neutral Palette --- */
+  --color-brand-cream: #F5F2ED;   /* Main Background: Warm Oatmeal */
+  --color-brand-beige: #E8E2D9;   /* Secondary: Soft Stone */
+  --color-brand-accent: #D9D2C5;  /* Borders/Dividers: Deep Sand */
+  --color-brand-gold: #B59970;    /* Highlights: Muted Champagne */
+  --color-brand-black: #2D2A26;   /* Text: Warm Espresso (Softer than black) */
+  --color-brand-slate: #706C67;   /* Body Copy: Taupe */
 
-  /* Typography - Using system-serif for that "Vogue" feel if no custom font is loaded */
+  /* Typography */
   --font-display: "Playfair Display", serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-
-  /* Custom Spacing & Shadows */
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
-  --radius-button: 0.5rem;
+  --font-sans: "Inter", sans-serif;
 }
 
-/* Custom Animations for a "High-End" reveal */
-@keyframes fade-up {
+/* --- Base Layout --- */
+body {
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-black);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* --- Clean Girl Elements --- */
+
+/* 1. Glassmorphism Navbar */
+/* Apply these classes to your nav based on the 'scrolled' state */
+.nav-glass {
+  transition: all 0.5s ease;
+}
+
+.nav-glass-scrolled {
+  background-color: rgba(245, 242, 237, 0.85); /* brand-cream with transparency */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-brand-accent);
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* 2. Pill-Shaped Luxury Buttons */
+.btn-fresha {
+  @apply bg-brand-black text-brand-cream px-10 py-4 rounded-full text-[10px] 
+         uppercase tracking-[0.4em] font-bold transition-all duration-700 
+         hover:bg-brand-gold hover:shadow-2xl active:scale-95 cursor-pointer;
+}
+
+/* 3. Portfolio & Image Frames */
+.img-frame {
+  @apply overflow-hidden rounded-sm bg-brand-beige transition-all duration-700;
+}
+
+/* 4. Subtle Page Textures */
+/* Adds a high-end "paper" feel to the background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  z-index: 9999;
+}
+
+/* --- Animations --- */
+@keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -29,26 +79,19 @@
 }
 
 .animate-reveal {
-  animation: fade-up 0.8s ease-out forwards;
+  animation: reveal 1.4s cubic-bezier(0.2, 1, 0.3, 1) forwards;
 }
 
-/* Base styles for clean typography */
-@layer base {
-  h1, h2, h3 {
-    @apply font-display tracking-tight leading-tight;
-  }
-
-  p {
-    @apply leading-relaxed text-brand-slate;
-  }
+/* --- Custom Scrollbar for the Minimalist look --- */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-/* Custom Class for the Fresha "Book" buttons */
-@layer components {
-  .btn-fresha {
-    @apply bg-brand-black text-white px-8 py-3 rounded-(--radius-button) 
-           uppercase tracking-widest text-xs font-bold
-           transition-all duration-300 hover:bg-brand-gold hover:-translate-y-0.5
-           active:translate-y-0 shadow-md;
-  }
+::-webkit-scrollbar-track {
+  background: var(--color-brand-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-accent);
+  border-radius: 10px;
 }
