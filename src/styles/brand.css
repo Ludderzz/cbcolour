@@ -1,0 +1,54 @@
+/* src/styles/brand.css */
+
+@theme {
+  /* Brand Colors - Inspired by premium salon aesthetics */
+  --color-brand-gold: #C5A059;       /* A more muted, sophisticated gold */
+  --color-brand-black: #111111;      /* Deep obsidian for high contrast */
+  --color-brand-cream: #F9F8F6;      /* Off-white "gallery" background */
+  --color-brand-slate: #4A4A4A;      /* For softer body text */
+
+  /* Typography - Using system-serif for that "Vogue" feel if no custom font is loaded */
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Custom Spacing & Shadows */
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --radius-button: 0.5rem;
+}
+
+/* Custom Animations for a "High-End" reveal */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+/* Base styles for clean typography */
+@layer base {
+  h1, h2, h3 {
+    @apply font-display tracking-tight leading-tight;
+  }
+
+  p {
+    @apply leading-relaxed text-brand-slate;
+  }
+}
+
+/* Custom Class for the Fresha "Book" buttons */
+@layer components {
+  .btn-fresha {
+    @apply bg-brand-black text-white px-8 py-3 rounded-(--radius-button) 
+           uppercase tracking-widest text-xs font-bold
+           transition-all duration-300 hover:bg-brand-gold hover:-translate-y-0.5
+           active:translate-y-0 shadow-md;
+  }
+}
