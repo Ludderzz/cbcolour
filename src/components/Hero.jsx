@@ -1,5 +1,5 @@
 import React from 'react';
-import heroImage from '../assets/hero3.jpg';
+import heroImage from '../assets/hero7.jpeg';
 
 export default function Hero() {
   // Same direct link used in the Navbar and Footer for consistency
@@ -44,16 +44,24 @@ export default function Hero() {
       </div>
 
       {/* Hero Image Section */}
-      <div className="w-full md:w-1/2 h-[65vh] md:h-[90vh] relative overflow-hidden group">
-        <div className="absolute inset-0 bg-brand-black/5 z-10 transition-opacity duration-700 group-hover:opacity-0" />
-        <img 
-          src={heroImage} 
-          alt="C.B Colour Bespoke Hair" 
-          className="w-full h-full object-cover object-center transition-transform duration-[3000ms] group-hover:scale-110"
-        />
-        {/* Subtle Decorative Element */}
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl" />
-      </div>
+{/* Hero Image Section */}
+<div className="w-full md:w-1/2 flex items-center justify-center p-4 md:p-12 group">
+  <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white/20">
+    <div className="absolute inset-0 bg-brand-black/5 z-10 transition-opacity duration-700 group-hover:opacity-0" />
+    
+    <img 
+      src={heroImage} 
+      alt="C.B Colour Bespoke Hair" 
+      /* h-auto and max-h ensure the full image fits 
+         without being forced into a tall, narrow box 
+      */
+      className="w-full h-auto max-h-[70vh] md:max-h-[85vh] object-contain transition-transform duration-[3000ms] scale-100 group-hover:scale-105"
+    />
+
+    {/* Subtle Decorative Element */}
+    <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 -translate-x-1/2 translate-y-1/2 rounded-full blur-3xl pointer-events-none" />
+  </div>
+</div>
     </section>
   );
 }
