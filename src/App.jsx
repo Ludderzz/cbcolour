@@ -7,6 +7,7 @@ import ServiceCard from './components/ServiceCard';
 import BookingWidget from './components/BookingWidget';
 import { services } from './data/services';
 import Portfolio from './components/Portfolio';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   useEffect(() => {
@@ -97,7 +98,9 @@ function App() {
       {/* Map, Contact & Hours */}
       <Footer />
 
+      
       {/* Floating Booking Trigger (Mobile & Desktop Tab) */}
+      <WhatsAppButton />
       <BookingWidget />
     </div>
   );
